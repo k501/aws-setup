@@ -1,0 +1,24 @@
+■ インストール
+https://www.rstudio.com/products/rstudio/download-server/
+
+sudo yum install R
+wget https://download2.rstudio.org/rstudio-server-rhel-0.99.489-x86_64.rpm
+sudo yum install --nogpgcheck rstudio-server-rhel-0.99.489-x86_64.rpm
+
+------------------------------------------------------------------------
+■ アクセス
+http://memorandum2015.sakura.ne.jp/docs/server/getting_started.html
+
+デフォルトではRStudio Serverは8787ポートで走っていて，すべての遠隔クライアントからのコネクションを受け入れます。
+したがってインストール後にウェブブラウザを使って以下のアドレスにアクセスすることでサーバにアクセスできます。
+http://52.192.72.181:8787
+
+------------------------------------------------------------------------
+■ 起動・停止
+http://memorandum2015.sakura.ne.jp/docs/server/management.html
+
+サーバの停止，起動，再起動を手動で行うには以下のコマンドを使います。
+sudo rstudio-server stop
+sudo rstudio-server start
+sudo rstudio-server restart
+

@@ -1,0 +1,22 @@
+■ Anaconda
+http://morimori2008.web.fc2.com/contents/PCprograming/python/pythonAnaconda.html
+
+wget http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.1-Linux-x86_64.sh
+
+bash Anaconda-2.0.1-Linux-x86_64.sh
+
+
+■ Theano
+sudo yum install -y git gcc make automake gcc gcc-c++ kernel-devel git-core 
+sudo pip install theano
+
+	
+■ pylearn2
+git clone git://github.com/lisa-lab/pylearn2.git
+cd pylearn2
+sudo python setup.py develop
+mkdir data
+echo "export PYLEARN2_DATA_PATH=/home/komai/data" >> .bashrc
+
+■ tensorflow
+

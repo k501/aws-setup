@@ -1,0 +1,38 @@
+
+sudo yum install -y tmux python-pip
+sudo yum install -y git gcc make automake gcc gcc-c++ gcc-gfortran kernel-devel git-core 
+sudo yum install -y python-devel git blas-devel lapack-devel
+sudo yum install -y atlas-devel atlas-sse3-devel
+
+sudo pip install numpy
+sudo pip install scipy
+sudo pip install cython
+sudo pip install ipython nose
+
+# matplotlib
+sudo yum install -y libpng-devel freetype-devel
+sudo pip install matplotlib
+
+# Scikit-learn
+sudo pip install scikit-learn
+
+# Theano
+sudo pip install --upgrade git+git://github.com/Theano/Theano.git
+
+# Enable GPU for theano
+echo '[global]
+floatX = float32
+device = gpu0
+
+[nvcc]
+fastmath = True' > .theanorc
+
+# pylearn2
+git clone git://github.com/lisa-lab/pylearn2.git
+cd pylearn2
+sudo python setup.py develop
+cd ..
+
+echo "export PYLEARN2_DATA_PATH=/home/ec2-user/data" >> .bashrc
+source .bashrc
+

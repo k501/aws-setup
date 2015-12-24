@@ -1,0 +1,50 @@
+http://qiita.com/dahugani/items/e1fc5c212bf6a7365f8f
+
+ssh -i .ssh/aws-ec2-user.pem ec2-user@52.192.150.196
+
+sudo yum update -y
+sudo useradd komai
+sudo passwd komai
+
+sudo visudo
+# 追記する
+komai    ALL=(ALL)       ALL
+
+sudo su - komai
+cd /home/komai
+
+vi .bashrc 
+# 追記する
+export PS1="[\u@Elycion]\\$"
+
+mkdir .ssh
+cd .ssh
+ssh-keygen -t rsa
+# Enter
+# Password
+mv id_rsa.pub authorized_keys
+
+chmod 600 authorized_keys
+cd ../
+chmod 700 .ssh
+
+# ローカルに秘密鍵をコピーする。
+cat .ssh/id_rsa
+
+# sshのタイムアウトの設定
+vi /etc/ssh/sshd_config
+ClientAliveInterval 15
+
+
+# @Local
+chmod 600 .ssh/aws-komai.pem 
+ssh -i ~/.ssh/aws-komai.pem komai@52.192.72.181
+
+
+ssh -i ~/.ssh/aws-komai komai@52.192.150.196
+
+
+
+
+
+
