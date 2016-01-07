@@ -1,6 +1,6 @@
 http://qiita.com/dahugani/items/e1fc5c212bf6a7365f8f
 
-ssh -i .ssh/aws-ec2-user.pem ec2-user@52.192.150.196
+ssh -i .ssh/aws-ec2-user.pem ec2-user@xx.xx.xx.xx
 
 sudo yum update -y
 sudo useradd komai
@@ -13,7 +13,7 @@ komai    ALL=(ALL)       ALL
 sudo su - komai
 cd /home/komai
 
-vi .bashrc 
+vi .bashrc
 # 追記する
 export PS1="[\u@Elycion]\\$"
 
@@ -37,14 +37,5 @@ ClientAliveInterval 15
 
 
 # @Local
-chmod 600 .ssh/aws-komai.pem 
-ssh -i ~/.ssh/aws-komai.pem komai@52.192.72.181
-
-
-ssh -i ~/.ssh/aws-komai komai@52.192.150.196
-
-
-
-
-
-
+chmod 600 .ssh/aws-komai.pem
+ssh -i ~/.ssh/aws-komai.pem komai@xx.xx.xx.xx

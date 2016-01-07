@@ -1,3 +1,40 @@
+sudo yum -y groupinstall "Development Tools"
+
+sudo rpm -ivh rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
+
+
+# === intel TBB ===========================
+wget http://threadingbuildingblocks.org/sites/default/files/software_releases/linux/tbb41_20130314oss_lin.tgz
+tar -xzf tbb41_20130314oss_lin.tgz
+sudo mkdir -p /opt/intel/tbb
+sudo mv ./tbb41_20130314oss /opt/intel/tbb
+cd /opt/intel/tbb/tbb41_20130314oss/bin/
+
+vi ./tbbvars.sh
+# Change the row below
+export TBBROOT=SUBSTITUTE_INSTALL_DIR_HERE
+# to like this
+export TBBROOT=/opt/intel/tbb/tbb41_20130314oss
+# End Changing tbbvars.sh
+
+
+source ./tbbvars.sh intel64
+echo $TBBROOT
+# confirm output just below
+# /opt/intel/tbb/tbb41_20130314oss
+
+
+# === openCV =================================
+scp /Users/komai/opencv-3.0.0.zip  komai@52.192.72.181:/home/komai
+unzip opencv-3.0.0.zip
+cd opencv-3.0.0
+mkdir release
+cd release
+cmake -D WITH_TBB=ON -D TBB_LIB_DIR=`echo $TBBROOT`/lib -D TBB_INCLUDE_DIR=`echo $TBBROOT`/include -D BUILD_EXAMPLES=YES -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_NEW_PYTHON_SUPPORT=NO -D WITH_1394=OFF ../
+make
+sudo make install
+
+
 
 sudo pip install pandas
 # CPU USE ONLY
@@ -6,5 +43,4 @@ sudo pip install keras
 
 vi .keras/keras.json
 # 追記
-{"epsilon": 1e-07, "floatx": "float32", "backend": "theano"} 
-
+{"epsilon": 1e-07, "floatx": "float32", "backend": "theano"}
