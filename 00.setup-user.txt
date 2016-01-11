@@ -38,4 +38,4 @@ ClientAliveInterval 15
 
 # @Local
 chmod 600 .ssh/aws-komai.pem
-ssh -i ~/.ssh/aws-komai.pem komai@xx.xx.xx.xx
+ssh -i ~/.ssh/aws-komai-gpu.pem komai@52.193.103.13

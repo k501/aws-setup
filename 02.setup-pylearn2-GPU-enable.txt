@@ -1,0 +1,52 @@
+# Pylearn2 setup script for Amazon Linux AMI with NVIDIA GRID GPU Driver.
+http://r9y9.github.io/blog/2014/07/20/pylearn2-on-ec2-g2-2xlarge/
+
+sudo yum update -y
+sudo yum install -y emacs tmux python-pip
+sudo yum install -y python-devel git blas-devel lapack-devel
+
+# numpy, scipy, matplotlib, etc.
+sudo pip install numpy
+sudo pip install scipy
+sudo pip install cython
+sudo pip install ipython nose
+sudo pip install pandas
+
+# matplotlib
+sudo yum install -y libpng-devel freetype-devel
+sudo pip install matplotlib
+
+# Scikit-learn
+sudo pip install scikit-learn
+
+# Theano
+sudo pip install --upgrade git+git://github.com/Theano/Theano.git
+
+# Enable GPU for theano
+echo '[global]
+floatX = float32
+device = gpu0
+
+[nvcc]
+fastmath = True' > .theanorc
+
+# pylearn2
+git clone git://github.com/lisa-lab/pylearn2.git
+cd pylearn2
+sudo python setup.py develop
+cd ..
+
+echo "export PYLEARN2_DATA_PATH=/home/komai/data" >> .bashrc
+
+# MNIST dataset
+mkdir -p data/mnist/
+cd data/mnist/
+wget http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+gunzip train-images-idx3-ubyte.gz
+wget http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+gunzip train-labels-idx1-ubyte.gz
+wget http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+gunzip t10k-images-idx3-ubyte.gz
+wget http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+gunzip t10k-labels-idx1-ubyte.gz
+cd ../..
