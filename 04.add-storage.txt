@@ -1,0 +1,9 @@
+sudo yum install -y xfsprogs
+sudo mkfs.xfs /dev/sdf
+
+sudo mkdir -p /mnt/xxxxx
+sudo mount -t xfs /dev/sdf /mnt/xxxx
+
+sudo vi /etc/fstab
+#追記
+/dev/sdf /mnt/ebs1 xfs defaults 0 0
