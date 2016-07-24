@@ -29,7 +29,6 @@ conda update --yes conda
 ##Install addtional python libraries
 conda install --yes seaborn boto3
 
-
 ##Configure Jupyter
 sudo su -l hadoop -c "jupyter notebook --generate-config"
 
@@ -42,10 +41,6 @@ sudo sed -i -e "3a c = get_config()" $JUPYTER_NOTEBOOK_CONFIG
 IPYTHON_KERNEL_CONFIG=/home/hadoop/.ipython/profile_default/ipython_kernel_config.py
 sudo su -l hadoop -c "ipython profile create"
 sudo sed -i -e "3a c.InteractiveShellApp.matplotlib = 'inline'" $IPYTHON_KERNEL_CONFIG
-
-# add 7/24 to use scala at Jupyter notebook
-pip install --pre toree
-sudo jupyter toree install
 
 ##Launch Jupyter by executing "pyspark"
 JUPYTER_PYSPARK_BIN=/home/hadoop/.jupyter/start-jupyter-pyspark.sh
