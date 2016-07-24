@@ -43,6 +43,9 @@ IPYTHON_KERNEL_CONFIG=/home/hadoop/.ipython/profile_default/ipython_kernel_confi
 sudo su -l hadoop -c "ipython profile create"
 sudo sed -i -e "3a c.InteractiveShellApp.matplotlib = 'inline'" $IPYTHON_KERNEL_CONFIG
 
+# add 7/24 to use scala at Jupyter notebook
+pip install --pre toree
+sudo jupyter toree install
 
 ##Launch Jupyter by executing "pyspark"
 JUPYTER_PYSPARK_BIN=/home/hadoop/.jupyter/start-jupyter-pyspark.sh
