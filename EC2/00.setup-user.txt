@@ -40,3 +40,10 @@ ClientAliveInterval 15
 # @Local
 chmod 600 .ssh/aws-komai.pem
 ssh -i ~/.ssh/aws-komai-gpu.pem komai@52.193.103.13
+
+
+
+# ec2にログイン後
+sudo yum install git
+
+
