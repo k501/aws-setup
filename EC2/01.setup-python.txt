@@ -6,7 +6,7 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 
-
+### anaconda
 pyenv install -l | grep ana
 # 最新版を確認。anaconda3-2.5.0 (2系はanaconda-2.5.0)
 # minicondaがいい人はminicondaを入れてください。
@@ -16,3 +16,17 @@ pyenv global anaconda3-4.1.0
 $ source ~/.bashrc
 # activateがpyenvとanacondaでバッティングするので、pathに明示しておく。
 $ conda update conda
+
+
+##Configure Jupyter
+sudo su -l komai -c "jupyter notebook --generate-config"
+
+JUPYTER_NOTEBOOK_CONFIG=/home/komai/.jupyter/jupyter_notebook_config.py
+sudo sed -i -e "3a c.NotebookApp.ip = '*'" $JUPYTER_NOTEBOOK_CONFIG
+sudo sed -i -e "3a c.NotebookApp.open_browser =False" $JUPYTER_NOTEBOOK_CONFIG
+sudo sed -i -e "3a c.NotebookApp.port = 8080" $JUPYTER_NOTEBOOK_CONFIG
+sudo sed -i -e "3a c = get_config()" $JUPYTER_NOTEBOOK_CONFIG
+
+IPYTHON_KERNEL_CONFIG=/home/komai/.ipython/profile_default/ipython_kernel_config.py
+sudo su -l komai -c "ipython profile create"
+sudo sed -i -e "3a c.InteractiveShellApp.matplotlib = 'inline'" $IPYTHON_KERNEL_CONFIG
