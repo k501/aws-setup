@@ -1,0 +1,18 @@
+参考：http://qiita.com/y__sama/items/5b62d31cb7e6ed50f02c
+
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+
+pyenv install -l | grep ana
+# 最新版を確認。anaconda3-2.5.0 (2系はanaconda-2.5.0)
+# minicondaがいい人はminicondaを入れてください。
+pyenv install anaconda3-4.1.0
+pyenv rehash
+pyenv global anaconda3-4.1.0
+$ source ~/.bashrc
+# activateがpyenvとanacondaでバッティングするので、pathに明示しておく。
+$ conda update conda
