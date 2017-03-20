@@ -1,0 +1,12 @@
+sudo yum install golang fuse -y
+
+# goofysのインストール
+export GOPATH=$HOME/go
+go get github.com/kahing/goofys
+go install github.com/kahing/goofys
+$GOPATH/bin/goofys -h
+
+# S3マウント
+mkdir ~/goofys
+$GOPATH/bin/goofys komai19850822 ~/goofys
+df -h

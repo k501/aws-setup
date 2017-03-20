@@ -1,0 +1,22 @@
+=== AWS
+DBインスタンス識別子：elysiondb
+komai / a5sb2050
+
+データベースの名前：elysiondb
+データベースのポート：3306
+
+接続コマンド
+mysql -h elysiondb.crno50lxqwgn.ap-northeast-1.rds.amazonaws.com -P 3306 -u komai -p
+
+csv取り込む
+load data local infile '/Users/komai/kaggle/bnp_paribas/data/sample_submission.csv' into table test fields terminated by ',';
+
+
+== LOCAL
+root / a5sb2050
+
+
+2016-11-01T14:02:22.603027Z 1 [Note] 
+A temporary password is generated for root@localhost: Ft,?b&paD5Ny
+
+If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.
