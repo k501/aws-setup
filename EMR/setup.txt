@@ -10,5 +10,6 @@
   　　ssh -i .ssh/aws-key.pem -ND 8444 hadoop@ec2-XX-XX-XX-XX.ap-northeast-1.compute.amazonaws.com
     　※ポートは、Chromeで設定しているproxyのポート番号
  ・ブラウザからポート指定してアクセス
+ 　　hue : 8888
 
 
